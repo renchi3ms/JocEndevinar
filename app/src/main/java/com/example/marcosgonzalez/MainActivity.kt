@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder
-            .setMessage("Era el numero " + numRandom + "\nHas usado " + numTries + " intentos.")
+
             .setTitle("¡¡ENHORABUENA!!")
             .setPositiveButton("Retry") { dialog, which ->
                 numRandom = (1..100).random()
@@ -48,6 +48,8 @@ class MainActivity : AppCompatActivity() {
             val numUser = inputUser.text.toString().toIntOrNull()
             if (numUser != null) {
                 if (numUser == numRandom) {
+                    numTries++
+                    dialog.setMessage("Era el numero " + numRandom + "\nHas usado " + numTries + " intentos.")
                     dialog.show()
                 } else if (numUser > numRandom) {
                     numTries++
