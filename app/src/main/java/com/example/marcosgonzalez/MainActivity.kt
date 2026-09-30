@@ -10,8 +10,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,20 +25,22 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        var numRandom = (1..100).random()
+        if(numRandom == 0) {
+            numRandom = Random.nextInt(1,100)
+        }
 
         val b = findViewById<Button>(R.id.boton1)
         val textLog = findViewById<TextView>(R.id.texto1)
         val inputUser = findViewById<EditText>(R.id.numUser)
         val miScrollView = findViewById<ScrollView>(R.id.myScrollView)
-        var numTries = 0;
 
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder
 
             .setTitle("¡¡ENHORABUENA!!")
             .setPositiveButton("Retry") { dialog, which ->
-                numRandom = (1..100).random()
+                numRandom = Random.nextInt(1,100)
+                numTries = 0
                 textLog.setText("")
             }
             .setNegativeButton("Finish") { dialog, which ->
@@ -72,4 +77,12 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    companion object {
+
+        var numRandom = 0
+        var numTries = 0
+
+    }
+
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Primeraapp</string>
+    <string name="username">Nombre usuario</string>
+    <string name="password">Contraseña</string>
 </resources>
